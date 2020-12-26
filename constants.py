@@ -1,0 +1,8 @@
+# Colors rgb codes
+WHITE = (243, 244, 245)
+BLACK = (52, 73, 94)
+GRAY = (96, 109, 122)
+GREEN = (26, 188, 156)
+BLUE = (175, 216, 248)
+YELLOW = (255, 254, 106)
+TURQUOISE = (0, 190, 218)
