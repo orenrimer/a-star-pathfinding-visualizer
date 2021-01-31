@@ -1,13 +1,13 @@
 import pygame
-import constants
+import colors
 from board import Grid
 from queue import PriorityQueue
 
 
 pygame.font.init()
-WIN = pygame.display.set_mode((Grid.WIDTH + 400, Grid.HEIGHT))
+WIN = pygame.display.set_mode((Grid.WIDTH + 400, Grid.WIDTH))
 pygame.display.set_caption("A* Path Finding Algorithm")
-WIN.fill(constants.WHITE)
+WIN.fill(colors.WHITE)
 
 
 def algorithm(draw, start, end):
@@ -53,9 +53,7 @@ def algorithm(draw, start, end):
                     current_node.make_path()
                 draw()
             return True
-
         draw()
-
     return False
 
 
@@ -71,7 +69,7 @@ def main(win):
     end = None
     run = True
     while run:
-        grid.draw(win)
+        grid.redraw(win)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -101,8 +99,8 @@ def main(win):
                 if event.key == pygame.K_SPACE and start and end:
                     for row in grid.grid:
                         for node in row:
-                            node.update_neighbors(grid.grid, grid.ROWS, grid.COLUMNS)
-                    algorithm((lambda: grid.draw(win)), start, end)
+                            node.update_neighbors(grid.grid, grid.ROWS, grid.ROWS)
+                    algorithm((lambda: grid.redraw(win)), start, end)
 
                 if event.key == pygame.K_r:
                     start = None
