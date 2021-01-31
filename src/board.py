@@ -3,7 +3,7 @@ import colors
 
 class Grid:
 
-    WIDTH = 1000
+    WIDTH = 800
     ROWS = 40
     CELL_WIDTH = WIDTH//ROWS
 
@@ -13,10 +13,15 @@ class Grid:
                      range(self.ROWS)]
 
     def draw_grid(self, win):
+        x = 0
+        y = 0
         for i in range(self.ROWS):
-            pygame.draw.line(win, colors.BLUE, (0, i * self.CELL_WIDTH), (self.WIDTH, i * self.CELL_WIDTH))
-            for j in range(self.ROWS):
-                pygame.draw.line(win, colors.BLUE, (j * self.CELL_WIDTH, 0), (j * self.CELL_WIDTH, self.WIDTH))
+            x = x + self.CELL_WIDTH
+            y = y + self.CELL_WIDTH
+
+            pygame.draw.line(win, colors.BLUE, (x, 0), (x, self.WIDTH))
+            pygame.draw.line(win, colors.BLUE, (0, y), (self.WIDTH, y))
+
 
     def redraw(self, win):
         for row in self.grid:
